@@ -17,17 +17,18 @@ def pdf_to_images(pdf_path: str):
 def docx_to_images(docx_path: str):
     pass
 
-def find_images(folder_path: str):
+def find_images(folder_path: str) -> list:
     image_path_list = []
     for root, dirs, files in os.walk(folder_path):
         for file in files:
             if file.endswith('.jpg'):
                 image_path_list.append(os.path.join(root, file))
     return image_path_list
+
 def ocr_to_text(image_path_list: list):
     languages = ['ru', 'en']
     reader = easyocr.Reader(languages, gpu=False)
-    
+
     image_path_list = find_images(PATH + 'images/')
 
     extracted_text_list = []
