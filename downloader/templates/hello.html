@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <form method="POST" action="/" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Select files for optical recognition below</label>
+            <input name="file" class="form-control" type="file" id="formFileMultiple" multiple>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Upload selected files</button>
+        </div>
+    </form>
+    <p>Files currently processed: {{ file_count }}</p>
+    <p>File names: <ul>
+        {% for file in file_path_list %}
+            <li>{{ file }}</li>
+        {% endfor %}
+        </ul></p>
+{% endblock %}

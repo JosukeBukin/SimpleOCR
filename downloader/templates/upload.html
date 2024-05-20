@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3>Your file will be proccessed any minute now...</h3>
+    <p>Files currently processed: {{ file_count }}</p>
+    <p>File names: <ul>
+        {% for file in file_path_list %}
+            <li>{{ file }}</li>
+        {% endfor %}
+        </ul></p>
+{% endblock %}
